@@ -1,8 +1,14 @@
 import os
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, request, url_for
+from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
 
 app = Flask(__name__)
 
+app.config["MONGO_DBNAME"] = 'appt_booking'
+app.config["MONGO_URI"] = 'mongodb+srv://gnisco:Rainbow123@cluster0-fijio.mongodb.net/appt_booking?retryWrites=true&w=majority'
+
+mongo = PyMongo(app)
 
 @app.route('/')
 def index():
@@ -12,6 +18,16 @@ def index():
 @app.route('/about')
 def about():
     return render_template("about.html")
+
+@app.route('/appointments')
+def appointments():
+    return render_template("appointments.html", appointments=mongo.db.appointments.find())
+
+
+@app.route('/booking')
+def booking():
+    return render_template("booking.html", services=mongo.db.services.find())
+
 
 @app.route('/blog-home-1')
 def bloghome1():
@@ -67,17 +83,19 @@ def portfolio4col():
 def portfolioitem():
     return render_template("portfolio-item.html")
     
-@app.route('/pricing')
-def pricing():
-    return render_template("pricing.html")
-    
 @app.route('/services')
 def services():
-    return render_template("services.html")
+    return render_template("services.html", services=mongo.db.services.find())
     
 @app.route('/sidebar')
 def sidebar():
     return render_template("sidebar.html")
+
+@app.route('/book_appointment', methods=['POST'])
+def book_appointment():
+    appointments = mongo.db.appointments
+    appointments.insert_one(request.form.to_dict())
+    return redirect(url_for('appointments'))
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP', '0.0.0.0'),

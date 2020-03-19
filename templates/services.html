@@ -1,10 +1,11 @@
 {% extends 'base.html' %} {% block content %}
+
   <!-- Page Content -->
   <div class="container">
 
     <!-- Page Heading/Breadcrumbs -->
     <h1 class="mt-4 mb-3">Services
-      <small>Subheading</small>
+      <small>Read through the different services we have to offer</small>
     </h1>
 
     <ol class="breadcrumb">
@@ -14,46 +15,29 @@
       <li class="breadcrumb-item active">Services</li>
     </ol>
 
-    <!-- Image Header -->
-    <img class="img-fluid rounded mb-4" src="http://placehold.it/1200x300" alt="">
-
-    <!-- Marketing Icons Section -->
+    <!-- Content Row -->
+    
     <div class="row">
+    {% for service in services %}
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <h4 class="card-header">Card Title</h4>
+          <h3 class="card-header">{{service.service_name}}</h3>
           <div class="card-body">
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+            <div class="font-italic">from</div>
+            <div class="display-4">{{service.service_cost}}</div>
           </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Learn More</a>
-          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{service.service_description}}</li>
+            <li class="list-group-item">
+              <a href="#" class="btn btn-primary">Book Now!</a>
+            </li>
+          </ul>
         </div>
       </div>
-      <div class="col-lg-4 mb-4">
-        <div class="card h-100">
-          <h4 class="card-header">Card Title</h4>
-          <div class="card-body">
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Learn More</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 mb-4">
-        <div class="card h-100">
-          <h4 class="card-header">Card Title</h4>
-          <div class="card-body">
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Learn More</a>
-          </div>
-        </div>
-      </div>
+    {% endfor %}
     </div>
     <!-- /.row -->
 
   </div>
+
 {% endblock %}
