@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from bson.objectid import ObjectId
 
 app = Flask(__name__)
 
@@ -57,9 +58,9 @@ def error():
 def faq():
     return render_template("faq.html")
     
-@app.route('/full-width')
-def fullwidth():
-    return render_template("full-width.html")
+@app.route('/admin_login')
+def adminlogin():
+    return render_template("admin_login.html")
     
 
     
@@ -86,6 +87,14 @@ def portfolioitem():
 @app.route('/services')
 def services():
     return render_template("services.html", services=mongo.db.services.find())
+
+@app.route('/services_admin')
+def servicesadmin():
+    return render_template("services_admin.html", services=mongo.db.services.find())
+
+@app.route('/add_services')
+def addservices():
+    return render_template("add_services.html", services=mongo.db.services.find())
     
 @app.route('/sidebar')
 def sidebar():
@@ -96,6 +105,11 @@ def book_appointment():
     appointments = mongo.db.appointments
     appointments.insert_one(request.form.to_dict())
     return redirect(url_for('appointments'))
+
+@app.route('/edit_service/<service_id>')
+def edit_service(service_id):
+    the_service =  mongo.db.services.find_one({"_id": ObjectId(service_id)})
+    return render_template('edit_service.html', service=the_service)
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP', '0.0.0.0'),

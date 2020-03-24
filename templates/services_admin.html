@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% block content %}
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">Services
+      <small>Read through the different services we have to offer</small>
+    </h1>
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="index.html">Home</a>
+      </li>
+      <li class="breadcrumb-item active">Services</li>
+    </ol>
+
+    <!-- Content Row -->
+    
+    <div class="row">
+    {% for service in services %}
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h3 class="card-header">{{service.service_name}}</h3>
+          <div class="card-body">
+            <div class="font-italic">from</div>
+            <div class="display-4">{{service.service_cost}}</div>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{service.service_description}}</li>
+            <li class="list-group-item">
+              <a href="#" class="btn btn-primary">Edit</a>
+              <a href="#" class="btn btn-primary">Delete</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <button type="button" href={{ url_for('addservices') }}>Add new Service</button>
+    </div>
+  </div>
+
+{% endblock %}

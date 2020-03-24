@@ -1,0 +1,52 @@
+{% extends 'base.html' %} {% block content %}
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">Admin Login
+      <small>Login to edit your website</small>
+    </h1>
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="index.html">Home</a>
+      </li>
+      <li class="breadcrumb-item active">Login Here</li>
+    </ol>
+
+    <div class="limiter">
+		<div class="login_container">
+			
+				<form class="login_form validate-form">
+					<span>
+						<img class="login_icon" src="static/images/admin_login_icon.png" alt="LOGO">
+					</span>
+                    <span class="login_title p-b-70">
+						<h3>Welcome</h3>
+					</span>
+
+					<div class="wrap-input validate-input m-t-85 m-b-35" data-validate="Enter username">
+						<input class="input" type="text" name="username" placeholder="Enter Username">
+					</div>
+
+					<div class="wrap-input validate-input m-b-50" data-validate="Enter password">
+						<input class="input" type="password" name="pass" placeholder="Enter Password">
+					</div>
+
+					<div class="container-login100-form-btn">
+						<input type="submit" name="" value="Login">
+					</div>
+				</form>
+			
+		</div>
+	</div>
+
+  </div>
+{% endblock %}
+
+{% block custom_js %}
+<script>
+    
+</script>
+{% endblock %} 

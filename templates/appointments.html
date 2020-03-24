@@ -17,3 +17,16 @@
         {% endfor %}
     </ul>
 {% endblock %}
+
+{% block custom_js %}
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            $('.collapsible').collapsible();
+            $('select').material_select();
+        });
+
+    </script>
+
+{% endblock %}
