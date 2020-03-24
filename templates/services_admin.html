@@ -4,15 +4,15 @@
   <div class="container">
 
     <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">Services
-      <small>Read through the different services we have to offer</small>
+    <h1 class="mt-4 mb-3">Edit Services
+      <small>Edit your different services available to offer customers</small>
     </h1>
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
         <a href="index.html">Home</a>
       </li>
-      <li class="breadcrumb-item active">Services</li>
+      <li class="breadcrumb-item active">Edit Services</li>
     </ol>
 
     <!-- Content Row -->
@@ -39,7 +39,7 @@
     </div>
     <!-- /.row -->
     <div class="row">
-        <button type="button" href={{ url_for('addservices') }}>Add new Service</button>
+        <a href="{{url_for('edit_service', service_id=service._id)}}">Edit</a>
     </div>
   </div>
 

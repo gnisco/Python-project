@@ -111,6 +111,18 @@ def edit_service(service_id):
     the_service =  mongo.db.services.find_one({"_id": ObjectId(service_id)})
     return render_template('edit_service.html', service=the_service)
 
+@app.route('/update_service/<service_id>', methods=["POST"])
+def update_service(service_id):
+    services = mongo.db.services
+    services.update( {'_id': ObjectId(service_id)},
+    {
+        'service_type':request.form.get('service_type'),
+        'service_name':request.form.get('service_name'),
+        'service_description': request.form.get('service_description'),
+        'service_cost': request.form.get('service_cost'),
+    })
+    return redirect(url_for('services_admin'))
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP', '0.0.0.0'),
             port=int(os.environ.get('PORT', '5000')),
