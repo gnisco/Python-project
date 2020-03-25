@@ -50,6 +50,12 @@ body {
     text-decoration: none;
 
 }
+
+.btn-primary {
+    background-color: #1FE9DA;
+    border-color: #6C6C6C
+    border-radius: 0%;
+}
 /******************************************************************* booking page styles */
 
 .section-form {
@@ -84,9 +90,6 @@ body {
 	top: 0px;
 	bottom: 0px;
 	width: 310px;
-	background-image: url('#');
-	background-size: cover;
-	background-position: center;
 }
 
 .booking-form>form {
