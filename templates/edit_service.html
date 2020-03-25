@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 
-  <div class="container">
+    <div class="container">
 
         <h1 class="mt-4 mb-3">Edit Selected Service</h1>
 
@@ -11,29 +11,34 @@
             <li class="breadcrumb-item active">Edit Selected Services</li>
         </ol>
 
-    <div class="row">
-        <form action="{{ url_for('update_service', service_id=service._id) }}" method="POST"  class="col s12">
-            <div class="row">
-                <div class="form-group">
-				    <input class="form-control" id="service_type" name="service_type" type="text" placeholder="Service Type" value="{{service.service_type}}">
-				    <span class="form-label">Service Type</span>
-			    </div>
-                <div class="form-group">
-				    <input class="form-control" id="service_name" name="service_name" type="text" placeholder="Service Name" value="{{service.service_name}}">
-				    <span class="form-label">Service Name</span>
-			    </div>
-			    <div class="form-group">
-				    <input class="form-control" id="price" name="price" type="price" placeholder="Price" value="{{service.service_price}}">
-				    <span class="form-label" >Price</span>
-			    </div>
-			    <div class="form-group">
-				    <input class="form-control" id="service_description" name="service_description" type="postcode" placeholder="Service Description" value="{{service.service_description}}">
-				    <span class="form-label" >Service Description</span>
-		        </div>
-            </div>
-        </form>
-    </div>
+        <div class="row">
+            <form action="{{ url_for('update_service', service_id=service._id) }}" method="POST"  class="col s12">
+                <div class="row">
+                    <div class="form-header">
+				        <input class="form-control" id="service_type" name="service_type" type="text" placeholder="Service Type" value="{{service.service_type}}">
+				        <span class="form-label">Service Type</span>
+			        </div>
+                    <div class="form-group">
+				        <input class="form-control" id="service_name" name="service_name" type="text" placeholder="Service Name" value="{{service.service_name}}">
+				        <span class="form-label">Service Name</span>
+			        </div>
+			        <div class="form-group">
+				        <input class="form-control" id="price" name="price" type="price" placeholder="Price" value="{{service.service_cost}}">
+				        <span class="form-label" >Price</span>
+			        </div>
+			        <div class="form-group">
+				        <input class="form-control" id="service_description" name="service_description" type="text" placeholder="Service Description" value="{{service.service_description}}">
+				        <span class="form-label" >Service Description</span>
+		            </div>
+                </div>
+                <div class="row">
+                    <button class="btn btn-primary" type="submit" name="action">Edit Service
+                    <i class="material-icons right">playlist_add</i>
+                    </button>
+                </div>
+            </form>
+        </div>
 
-  </div>
+    </div>
 
 {% endblock %}

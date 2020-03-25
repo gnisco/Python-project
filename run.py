@@ -121,7 +121,7 @@ def update_service(service_id):
         'service_description': request.form.get('service_description'),
         'service_cost': request.form.get('service_cost'),
     })
-    return redirect(url_for('services_admin'))
+    return redirect(url_for('servicesadmin'))
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP', '0.0.0.0'),
