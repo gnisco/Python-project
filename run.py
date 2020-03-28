@@ -123,6 +123,22 @@ def update_service(service_id):
     })
     return redirect(url_for('servicesadmin'))
 
+@app.route('/add_service')
+def add_service():
+    return render_template('add_service.html', services=mongo.db.services.find())
+
+
+@app.route('/insert_service', methods=['POST'])
+def insert_service():
+    services =  mongo.db.services
+    services.insert_one(request.form.to_dict())
+    return redirect(url_for('servicesadmin'))
+
+@app.route('/delete_service/<service_id>')
+def delete_service(service_id):
+    mongo.db.services.remove({'_id': ObjectId(service_id)})
+    return redirect(url_for('servicesadmin'))
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP', '0.0.0.0'),
             port=int(os.environ.get('PORT', '5000')),

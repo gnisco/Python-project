@@ -30,19 +30,22 @@
             <li class="list-group-item">{{service.service_description}}</li>
             <li class="list-group-item">
               <a href="{{url_for('edit_service', service_id=service._id)}}" class="btn btn-primary">Edit</a>
-              <a href="#" class="btn btn-primary">Delete</a>
+              <a href="{{url_for('delete_service', service_id=service._id)}}" class="btn btn-primary">Delete</a>
             </li>
           </ul>
         </div>
       </div>
+
+      
     {% endfor %}
     </div>
-    <!-- /.row -->
-    <div class="row">
-        {% for service in services %}
-            
-        {% endfor %}
+
+    <div class="row mb-4 book_now_link">
+        <div class="col-md-4 book_now_btn">
+            <a class="btn btn-lg btn-secondary btn-block" href="{{ url_for('add_service') }}">Add New Service</a>
+        </div>
     </div>
+    
   </div>
 
 {% endblock %}

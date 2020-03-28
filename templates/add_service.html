@@ -13,36 +13,36 @@
 
         <div class="container container_edit_services">
 		    <div class="wrap_edit_service">
-			    <form class="edit_service-form validate-form" action="{{ url_for('update_service', service_id=service._id) }}" method="POST">
+			    <form class="edit_service-form validate-form" action="{{ url_for('insert_service') }}" method="POST">
 
 				    <div class="wrap-input validate-input" data-validate="Type is required">
 					    <span class="form-label">Service Type</span>
-					    <input class="form-control" id="service_type" name="service_type" type="text" placeholder="Service Type" value="{{service.service_type}}">
+					    <input class="form-control" id="service_type" name="service_type" type="text" placeholder="Service Type">
 					    <span class="focus-input100"></span>
 				    </div>
 
 				    <div class="wrap-input validate-input" data-validate="Name is required">
 					    <span class="form-label">Service Name</span>
-					    <input class="form-control" id="service_name" name="service_name" type="text" placeholder="Service Name" value="{{service.service_name}}">
+					    <input class="form-control" id="service_name" name="service_name" type="text" placeholder="Service Name">
 					    <span class="focus-input100"></span>
 				    </div>
 
                     <div class="wrap-input validate-input" data-validate="Price is required">
                         <span class="form-label" >Price</span>
-					    <input class="form-control" id="service_cost" name="service_cost" type="price" placeholder="Price" value="{{service.service_cost}}">
+					    <input class="form-control" id="service_cost" name="service_cost" type="price" placeholder="Price">
 					    <span class="focus-input100"></span>
 				    </div>
 
                     <div class="wrap-input validate-input" data-validate="Description is required">
                         <span class="form-label" >Service Description</span>
-                        <input class="form-control" id="service_description" name="service_description" type="text" placeholder="Service Description" value="{{service.service_description}}">
+                        <input class="form-control" id="service_description" name="service_description" type="text" placeholder="Service Description">
 					    <span class="focus-input100"></span>
 				    </div>
 
 					<div class="wrap_edit_service_form_btn">
 						<div class="col-md-4 book_now_btn">
 						    <button class="btn btn-lg btn-secondary btn-block" type="submit" name="action">
-							    <span>Edit Service</span>
+							    <span>Add Service</span>
 						    </button>
 					    </div>
 				    </div>
