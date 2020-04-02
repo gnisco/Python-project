@@ -51,17 +51,26 @@ body {
 
 }
 
-.btn-primary {
-    background-color: #2EC4B9;
-    border-color: #2EC4B9;
-    border-radius: 0%;
+.btn-outline-primary {
+    color: #7A7A7A ! important;
+    border-color: #7A7A7A ! important;
 }
 
-.btn-primary:hover {
-    cursor: pointer;
-    background: #7A7A7A;
-    color: #fff;
+.btn-outline-primary:hover {
+
+}
+
+.btn-outline-primary:active {
     
+}
+
+.btn-outline-secondary {
+	color: #3AEBEB ! important;
+    border-color: #3AEBEB ! important;
+}
+
+.btn-outline-secondary:hover {
+
 }
 
 .main_container {
@@ -104,20 +113,11 @@ body {
 	max-width: 768px;
 	width: 100%;
 	margin: auto;
-	background: #999999;
-}
-
-.booking-form>.booking-bg {
-	position: absolute;
-	left: 0px;
-	top: 0px;
-	bottom: 0px;
-	width: 310px;
+	background: #7A7A7A;
 }
 
 .booking-form>form {
-	margin-left: 310px;
-	padding: 30px;
+	padding: 50px;
 }
 
 .booking-form .form-header {
@@ -126,10 +126,6 @@ body {
 
 .form-header h2 {
     color: #fff;
-}
-
-.booking-form {
-    color: #1a1b1d;
 }
 
 .booking-form .form-header h2 {
@@ -277,6 +273,10 @@ body {
 	.booking-form>form {
 		margin-left: 0px;
 	}
+}
+
+.service_dropdown {
+    
 }
 
 /******************************************************************* Calender in booking page styles */

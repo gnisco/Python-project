@@ -5,7 +5,7 @@
 
     <!-- Page Heading/Breadcrumbs -->
     <h1 class="mt-4 mb-3">Services
-      <small>Read through the different services we have to offer</small>
+      <small>Look through the different services we have to offer!</small>
     </h1>
 
     <ol class="breadcrumb">
@@ -29,7 +29,7 @@
           <ul class="list-group list-group-flush">
             <li class="list-group-item">{{service.service_description}}</li>
             <li class="list-group-item">
-              <a href="#" class="btn btn-primary">Book Now!</a>
+              <a href="{{ url_for('booking') }}" class="btn btn-outline-primary">Book Now!</a>
             </li>
           </ul>
         </div>
