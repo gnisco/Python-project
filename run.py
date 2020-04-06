@@ -1,7 +1,7 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for
+import bcrypt
+from flask import Flask, render_template, redirect, request, url_for, session, flash
 from flask_pymongo import PyMongo
-from bson.objectid import ObjectId
 from bson.objectid import ObjectId
 
 app = Flask(__name__)
@@ -60,9 +60,7 @@ def faq():
     
 @app.route('/admin_login')
 def adminlogin():
-    return render_template("admin_login.html")
-    
-
+    return render_template("admin_login.html", services=mongo.db.admin_user.find())
     
 @app.route('/portfolio-1-col')
 def portfolio1col():
@@ -139,17 +137,63 @@ def delete_service(service_id):
     mongo.db.services.remove({'_id': ObjectId(service_id)})
     return redirect(url_for('servicesadmin'))
 
-if __name__ == '__main__':
-    app.run(host=os.environ.get('IP', '0.0.0.0'),
-            port=int(os.environ.get('PORT', '5000')),
-            debug=True)
+@app.route('/register', methods=['POST', 'GET'])
+def register():
+    if request.method == 'POST':
+        existing_user = mongo.db.users.find_one({'username' : request.form['username']})
+        password = request.form['password']
+        username = request.form['username']
+        
+        if password == '' or username == '':
+            error = 'Please enter a username and password'
+            return render_template('index.html')
+
+        if existing_user is None:
+            haspass = bcrypt.generate_password_hash(request.form['password']).decode('utf-8')
+            mongo.db.users.insert_one({
+                'username' : request.form['username'], 
+                'password' : hashpass
+            })
+            session['username'] = request.form['username']
+            return redirect(url_for('index'))
+
+        else:
+            flash('This username already exists!')
+
+    return render_template('register.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    error = None
-    if request.method == 'POST':
-        if request.form['username'] != 'admin' or request.form['password'] != 'admin':
-            error = 'Invalid Credentials. Please try again.'
+    print("THE DATA:")
+    print(request.data)
+
+    username = request.form['username']
+    login_user = mongo.db.users.find_one({'username' : username})
+
+    password = "seCr3t"
+    hashed_password = "hashed_seCr3t"
+    bcrypt.checkpw(password, hashed_password)
+    
+    if login_user:
+        if bcrypt.check_password_hash(login_user['password'], request.form['password']):
+            session['username'] = request.form.to_dict()['username']
+            user_id = login_user['username']
+            return redirect(url_for('index', user_id = user_id ))
         else:
-            return redirect(url_for('index'))
-    return render_template('admin_login.html', error=error)
+            flash('Invalid Username or Password, Please try again.')
+            return render_template(url_for('admin_login'))
+    else:
+        flash('Invalid Username or Password, Please try again.')
+        
+    return render_template(url_for('admin_login'))
+
+@app.route('/end_session')
+def end_session():
+    session.clear()
+    return redirect(url_for('index'))
+
+if __name__ == '__main__':
+    app.secret_key = 'kEysarEsEcrEt'
+    app.run(host=os.environ.get('IP', '0.0.0.0'),
+            port=int(os.environ.get('PORT', '5000')),
+            debug=True)

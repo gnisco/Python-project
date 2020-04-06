@@ -9,6 +9,9 @@ body {
   padding-top: 56px;
 }
 
+.navbar-brand {
+    color: red;
+}
 .carousel-item {
   height: 65vh;
   min-height: 300px;
@@ -54,24 +57,6 @@ body {
 .btn-outline-primary {
     color: #7A7A7A ! important;
     border-color: #7A7A7A ! important;
-}
-
-.btn-outline-primary:hover {
-
-}
-
-.btn-outline-primary:active {
-    
-}
-
-.btn-outline-secondary {
-	color: #3AEBEB ! important;
-    border-color: #3AEBEB ! important;
-}
-
-.btn-outline-secondary:hover {
-
-}
 
 .main_container {
   position: relative;
@@ -86,7 +71,8 @@ body {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 2.5rem;           
+  height: 2.5rem;  
+  background-color: #7A7A7A ! important;        
 }
 /******************************************************************* booking page styles */
 
@@ -276,7 +262,7 @@ body {
 }
 
 .service_dropdown {
-    
+    width: 80%;
 }
 
 /******************************************************************* Calender in booking page styles */

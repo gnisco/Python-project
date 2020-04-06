@@ -25,6 +25,7 @@
   <link href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
 
 
+
 </head>
 
 <body>
@@ -41,23 +42,11 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="{{ url_for('about') }}">About</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Services
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                                <a class="dropdown-item" href="{{ url_for('services') }}">Services</a>
-                                <a class="dropdown-item" href="{{ url_for('servicesadmin') }}">Services-Admin</a>
-                            </div>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('services') }}">Services</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Book Appointment
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                                <a class="dropdown-item" href="{{ url_for('booking') }}">Book Appointment</a>
-                                <a class="dropdown-item" href="{{ url_for('appointments') }}">Appointments</a>
-                            </div>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('booking') }}">Book Appointment</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
@@ -90,11 +79,22 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
                                 <a class="dropdown-item" href="{{ url_for('adminlogin') }}">Admin Login</a>
-                                <a class="dropdown-item" href="{{ url_for('sidebar') }}">Sidebar Page</a>
+                                <a class="dropdown-item" href="{{ url_for('register') }}">Sidebar Page</a>
                                 <a class="dropdown-item" href="{{ url_for('faq') }}">FAQ</a>
                                 <a class="dropdown-item" href="{{ url_for('error') }}">404</a>
                             </div>
                         </li>
+                        {% if username in session %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Admin Tools
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                                    <a class="dropdown-item" href="{{ url_for('appointments') }}">Appointments</a>
+                                    <a class="dropdown-item" href="{{ url_for('servicesadmin') }}">Edit Services</a>
+                                </div>
+                            </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
@@ -109,7 +109,10 @@
                 <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
             </div>
             <div class="container">
-                <a class="login_link btn btn-outline-secondary" href="{{ url_for('adminlogin') }}">Admin Login</a>
+                <a class="login_link btn btn-outline-primary" href="{{ url_for('adminlogin') }}">Admin Login</a>
+            </div>
+            <div class="container">
+                <a class="login_link btn btn-outline-primary" href="{{ url_for('end_session') }}">Log Out</a>
             </div>
         </footer>
 
