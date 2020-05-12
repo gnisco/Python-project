@@ -6,6 +6,7 @@ from bson.objectid import ObjectId
 
 app = Flask(__name__)
 
+
 app.config["MONGO_DBNAME"] = 'appt_booking'
 app.config["MONGO_URI"] = 'mongodb+srv://gnisco:Rainbow123@cluster0-fijio.mongodb.net/appt_booking?retryWrites=true&w=majority'
 
@@ -19,6 +20,10 @@ def index():
 @app.route('/about')
 def about():
     return render_template("about.html")
+
+@app.route('/admin_login')
+def adminlogin():
+    return render_template("admin_login.html")
 
 @app.route('/appointments')
 def appointments():
@@ -57,10 +62,6 @@ def error():
 @app.route('/faq')
 def faq():
     return render_template("faq.html")
-    
-@app.route('/admin_login')
-def adminlogin():
-    return render_template("admin_login.html", services=mongo.db.admin_user.find())
     
 @app.route('/portfolio-1-col')
 def portfolio1col():
@@ -140,21 +141,23 @@ def delete_service(service_id):
 @app.route('/register', methods=['POST', 'GET'])
 def register():
     if request.method == 'POST':
-        existing_user = mongo.db.users.find_one({'username' : request.form['username']})
-        password = request.form['password']
         username = request.form['username']
+        password = request.form['password']
+        
         
         if password == '' or username == '':
             error = 'Please enter a username and password'
             return render_template('index.html')
 
+        existing_user = mongo.db.users.find_one({'username' : username})
+
         if existing_user is None:
-            haspass = bcrypt.generate_password_hash(request.form['password']).decode('utf-8')
+            hashed_password = bcrypt.hashpw(password, bcrypt.gensalt(14))
             mongo.db.users.insert_one({
-                'username' : request.form['username'], 
-                'password' : hashpass
+                'username' : username, 
+                'password' : hashed_password
             })
-            session['username'] = request.form['username']
+            session['username'] = username
             return redirect(url_for('index'))
 
         else:
@@ -167,25 +170,25 @@ def login():
     print("THE DATA:")
     print(request.data)
 
-    username = request.form['username']
-    login_user = mongo.db.users.find_one({'username' : username})
+    if request.method == 'POST':
+        password = request.form['password']
+        username = request.form['username']
+        login_user = mongo.db.users.find_one({'username' : username})
 
-    password = "seCr3t"
-    hashed_password = "hashed_seCr3t"
-    bcrypt.checkpw(password, hashed_password)
+        
     
-    if login_user:
-        if bcrypt.check_password_hash(login_user['password'], request.form['password']):
-            session['username'] = request.form.to_dict()['username']
-            user_id = login_user['username']
-            return redirect(url_for('index', user_id = user_id ))
+        if login_user:
+            hashed_password = login_user['password']
+            if bcrypt.checkpw(password.encode('utf-8'), hashed_password):
+                session['username'] = username
+                return redirect(url_for('index', user_id = username ))
+            else:
+                flash('Invalid Username or Password, Please try again.')
+                return render_template(url_for('adminlogin'))
         else:
             flash('Invalid Username or Password, Please try again.')
-            return render_template(url_for('admin_login'))
-    else:
-        flash('Invalid Username or Password, Please try again.')
         
-    return render_template(url_for('admin_login'))
+    return render_template("admin_login.html")
 
 @app.route('/end_session')
 def end_session():

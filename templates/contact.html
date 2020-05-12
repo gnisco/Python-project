@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block content %}
+ {% extends 'base.html' %} {% block content %}
 
   <!-- Page Content -->
   <div class="container">
@@ -60,12 +60,6 @@
           </div>
           <div class="control-group form-group">
             <div class="controls">
-              <label>Phone Number:</label>
-              <input type="tel" class="form-control" id="phone" required data-validation-required-message="Please enter your phone number.">
-            </div>
-          </div>
-          <div class="control-group form-group">
-            <div class="controls">
               <label>Email Address:</label>
               <input type="email" class="form-control" id="email" required data-validation-required-message="Please enter your email address.">
             </div>
@@ -90,11 +84,11 @@
 
 {% endblock %}
 
-{% block custom_js %}
+{% block custom_js_head %}
     <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.2.4/email.min.js"></script>
     <script type="text/javascript">
         (function() {
-            emailjs.init("user_AerXI8KRfSl1OUC9ktvwW");
+            emailjs.init(" user_AerXI8KRfSl1OUC9ktvwW");
         })();
     </script>
 {% endblock %}

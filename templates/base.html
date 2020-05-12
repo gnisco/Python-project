@@ -24,6 +24,8 @@
   <!-- Custom styles for this template -->
   <link href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
 
+  {% block custom_js_head %} {% endblock %}
+
 
 
 </head>
@@ -105,13 +107,13 @@
         </div>
 
         <footer class="py-5 bg-dark">
-            <div class="container">
+            <div class="container row">
                 <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
             </div>
-            <div class="container">
+            <div class="container row">
                 <a class="login_link btn btn-outline-primary" href="{{ url_for('adminlogin') }}">Admin Login</a>
             </div>
-            <div class="container">
+            <div class="container row">
                 <a class="login_link btn btn-outline-primary" href="{{ url_for('end_session') }}">Log Out</a>
             </div>
         </footer>
