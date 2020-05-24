@@ -25,11 +25,6 @@ def about():
 def adminlogin():
     return render_template("admin_login.html")
 
-@app.route('/appointments')
-def appointments():
-    return render_template("appointments.html", appointments=mongo.db.appointments.find())
-
-
 @app.route('/booking')
 def booking():
     return render_template("booking.html", services=mongo.db.services.find())

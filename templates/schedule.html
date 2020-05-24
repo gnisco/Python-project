@@ -14,25 +14,45 @@
       </li>
       <li class="breadcrumb-item active">Schedule</li>
     </ol>
-
     
-    <div class="mb-4" id="accordion" role="tablist" aria-multiselectable="true">
-        {% for appointment in appountments %}
-            <div class="card">
-                <div class="card-header" role="tab" id="headingOne">
-                    <h5 class="mb-0">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">{{appointment.name}} - {{appointment.appt_date}} - {{appointment.appt_time}}</a>
-                    </h5>
-                </div>
+    <div class="container">
+        {% for appointment in appointments %}
+            
+           <div class="mb-4" id="accordion" role="tablist" aria-multiselectable="true">
+            
+                <div class="card">
+                    <div class="card-header" role="tab" id="appt_heading">
+                        <h5 class="mb-0">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                {{appointment.name}} - {{appointment.appt_date}} - {{appointment.appt_time}}
+                            </a>
+                        </h5>
+                    </div>
 
-                <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
-                    <div class="card-body">
-                        {{appointment.phone_number}} - {{appointment.service}} - {{appointment.appt_location}}
+                    <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="appt_heading">
+                        <div class="card-body">
+                            {{appointment.phone_number}} - {{appointment.service_name}} - {{appointment.appt_location}}
+                        </div>
                     </div>
                 </div>
+            
             </div>
+            
         {% endfor %}
     </div>
-
+        
   </div>
+{% endblock %}
+
+{% block custom_js %}
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            $('.collapsible').collapsible();
+            $('select').material_select();
+        });
+
+    </script>
+
 {% endblock %}
