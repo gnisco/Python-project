@@ -1,6 +1,6 @@
 import os
 import bcrypt
-from flask import Flask, render_template, redirect, request, url_for, session, flash
+from flask import Flask, render_template, redirect, request, url_for, session, flash, g
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
@@ -59,9 +59,9 @@ def contact():
 def error():
     return render_template("error.html")
 
-@app.route('/faq')
-def faq():
-    return render_template("faq.html")
+@app.route('/schedule')
+def schedule():
+    return render_template("schedule.html", appointments=mongo.db.appointments.find())
     
 @app.route('/portfolio-1-col')
 def portfolio1col():
@@ -189,6 +189,13 @@ def login():
             flash('Invalid Username or Password, Please try again.')
         
     return render_template("admin_login.html")
+
+@app.route('/order', methods=['POST'])
+def order_entry():
+    cur = g.db.execute('select title, text from entries order by id desc')
+    entries = [dict(title=row[0], text=row[1]) for row in cur.fetchall()]
+    entries = sorted(entries, key=lambda d: d['title'])
+    return render_template('show_entries.html', entries=entries)
 
 @app.route('/end_session')
 def end_session():

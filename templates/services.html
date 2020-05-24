@@ -19,7 +19,7 @@
     
     <div class="row">
     {% for service in services %}
-      <div class="col-lg-4 mb-4">
+      <div class="col-lg-4 mb-4" action="{{ url_for('order_entry') }}">
         <div class="card h-100">
           <h3 class="card-header">{{service.service_name}}</h3>
           <div class="card-body">
