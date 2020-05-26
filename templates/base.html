@@ -54,46 +54,23 @@
                             <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Portfolio
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                                <a class="dropdown-item" href="{{ url_for('portfolio1col') }}">1 Column Portfolio</a>
-                                <a class="dropdown-item" href="{{ url_for('portfolio2col') }}">2 Column Portfolio</a>
-                                <a class="dropdown-item" href="{{ url_for('portfolio3col') }}">3 Column Portfolio</a>
-                                <a class="dropdown-item" href="{{ url_for('portfolio4col') }}">4 Column Portfolio</a>
-                                <a class="dropdown-item" href="{{ url_for('portfolioitem') }}">Single Portfolio Item</a>
-                            </div>
-                            </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Blog
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                                <a class="dropdown-item" href="{{ url_for('bloghome1') }}">Blog Home 1</a>
-                                <a class="dropdown-item" href="{{ url_for('bloghome2') }}">Blog Home 2</a>
-                                <a class="dropdown-item" href="{{ url_for('blogpost') }}">Blog Post</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Other Pages
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
                                 <a class="dropdown-item" href="{{ url_for('adminlogin') }}">Admin Login</a>
-                                <a class="dropdown-item" href="{{ url_for('register') }}">Sidebar Page</a>
+                                <a class="dropdown-item" href="{{ url_for('register') }}">Register</a>
                                 <a class="dropdown-item" href="{{ url_for('schedule') }}">Schedule</a>
-                                <a class="dropdown-item" href="{{ url_for('error') }}">404</a>
                             </div>
                         </li>
-                        {% if username in session %}
+                        {% if user_id in session %}
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAdmintools" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Admin Tools
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                                    <a class="dropdown-item" href="{{ url_for('appointments') }}">Appointments</a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownAdmintools">
                                     <a class="dropdown-item" href="{{ url_for('servicesadmin') }}">Edit Services</a>
+                                    <a class="dropdown-item" href="{{ url_for('schedule') }}">Schedule</a>
                                 </div>
                             </li>
                         {% endif %}
@@ -110,12 +87,17 @@
             <div class="container row">
                 <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
             </div>
-            <div class="container row">
-                <a class="login_link btn btn-outline-primary" href="{{ url_for('adminlogin') }}">Admin Login</a>
-            </div>
+            {% if user_id not in session %}
+                <div class="container row">
+                    <a class="login_link btn btn-outline-primary" href="{{ url_for('adminlogin') }}">Admin Login</a>
+                </div>
+            {% endif %}
             <div class="container row">
                 <a class="login_link btn btn-outline-primary" href="{{ url_for('end_session') }}">Log Out</a>
             </div>
+            {% if user_id in session %}
+                
+            {% endif %}
         </footer>
 
     </div>

@@ -49,10 +49,6 @@ def bookappointments():
 @app.route('/contact')
 def contact():
     return render_template("contact.html")
-    
-@app.route('/error')
-def error():
-    return render_template("error.html")
 
 @app.route('/schedule')
 def schedule():
@@ -196,6 +192,11 @@ def order_entry():
 def end_session():
     session.clear()
     return redirect(url_for('index'))
+
+@app.errorhandler(404)
+def error_page(e):
+    
+    return render_template('error.html'), 404
 
 if __name__ == '__main__':
     app.secret_key = 'kEysarEsEcrEt'

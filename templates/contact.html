@@ -43,26 +43,26 @@
     <!-- Contact Form -->
     <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
     <div class="row">
-      <div class="col-lg-8 mb-4">
+      <div class="col-lg-8 mb-4 message">
         <h3>Send us a Message</h3>
-        <form name="sentMessage" id="contactForm" novalidate>
+        <form name="sentMessage" id="contact_form" onsubmit="return sendMail(this);" method="POST" novalidate>
           <div class="control-group form-group">
             <div class="controls">
               <label>Full Name:</label>
-              <input type="text" class="form-control" id="name" required data-validation-required-message="Please enter your name.">
+              <input type="text" class="form-control" name="name" id="name" required data-validation-required-message="Please enter your name.">
               <p class="help-block"></p>
             </div>
           </div>
           <div class="control-group form-group">
             <div class="controls">
               <label>Email Address:</label>
-              <input type="email" class="form-control" id="email" required data-validation-required-message="Please enter your email address.">
+              <input type="email" class="form-control" name="email" id="email" required data-validation-required-message="Please enter your email address.">
             </div>
           </div>
           <div class="control-group form-group">
             <div class="controls">
               <label>Message:</label>
-              <textarea rows="10" cols="100" class="form-control" id="message" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
+              <textarea rows="10" cols="100" class="form-control" name="message" id="message" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
             </div>
           </div>
           <div id="success"></div>
@@ -80,31 +80,32 @@
 {% endblock %}
 
 {% block custom_js_head %}
-    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.2.4/email.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.3.2/dist/email.min.js"></script>
     <script type="text/javascript">
-        (function() {
-            emailjs.init(" user_AerXI8KRfSl1OUC9ktvwW");
+        (function(){
+            emailjs.init("user_IbsmyvJymVJ1OKX0cZygE");
         })();
     </script>
+
 {% endblock %}
 
 {% block custom_js %}
     <script type="text/javascript">
-        function sendMail(contactForm) {
-            emailjs.send("outlook", "contactForm", {
-                "from_name": contactForm.name.value,
-                "from_email": contactForm.email.value,
-                "enquiry": contactForm.message.value
+        function sendMail(message) {
+            emailjs.send("gmail", "message", {
+                "from_name": message.name.value,
+                "from_email": message.email.value,
+                "message": message.message.value
             })
             .then(
                 function(response) {
-                    console.log("SUCCESS", response, contactForm.name.value = "", contactForm.email.value = "", contactForm.message.value = "", alert("Your email has been sent"));
+                    console.log("SUCCESS", response, message.name.value = "", message.email.value = "", message.message.value = "", alert("Your email has been sent"));
                 },
                 function(error) {
-                    console.log("FAILED", error, contactForm.name.value = "", contactForm.email.value = "", contactForm.message.value = "", alert("There was an error please try again"));
+                    console.log("FAILED", error, message.name.value = "", message.email.value = "", message.message.value = "", alert("There was an error please try again"));
                 }
             );
             return false;
         }
     </script>
-{% enblock %}
+{% endblock %}

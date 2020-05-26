@@ -1,57 +1,72 @@
 {% extends 'base.html' %} {% block content %}
+    <div class="container">
 
-    <div id="booking" class="section-form">
-		<div class="section-center-form">
-			<div class="container">
-				<div class="row">
-					<div class="booking-form">
-						<form action="{{ url_for('book_appointment') }}" method="POST">
-							<div class="form-header">
-								<h2>Book Your Appointment</h2>
-							</div>
-							<div class="form-group">
-								<input class="form-control" id="name" name="name" type="text" placeholder="Name">
-								<span class="form-label">Name</span>
-							</div>
-							<div class="form-group">
-								<input class="form-control" id="phone_number" name="phone_number" type="tel" placeholder="Phone number">
-								<span class="form-label" >Phone</span>
-							</div>
-							<div class="form-group">
-								<input class="form-control" id="appt_location" name="appt_location" type="postcode" placeholder="Address for the Appointment">
-								<span class="form-label" >Location</span>
-							</div>
-                            <div class="form-group">
-								<select id="service" name="service_name" class="service_dropdown form-control">
-                                    <option selected>Choose Service</option>
-                                    {% for service in services %}
-                                        <option value="{{service.service_name}}">{{service.service_name}}</option>
-                                    {% endfor %}
-                                </select>
-                                <span class="form-label" >Service</span>
-							</div>
-							<div class="row">
-								<div class="row">
-                                    <div class="input-field col s12">
-                                        <input placeholder="Selected date" id="appt_date" name="appt_date" type="text" class="form-control" id="datepicker">
+        <!-- Page Heading/Breadcrumbs -->
+        <h1 class="mt-4 mb-3">Book Appointment
+        <small>Fill in the information to book appointments here</small>
+        </h1>
+
+        <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html">Home</a>
+        </li>
+        <li class="breadcrumb-item active">Book Appointment</li>
+        </ol>
+
+        <div id="booking" class="section-form">
+            <div class="section-center-form">
+                <div class="container">
+                    <div class="row">
+                        <div class="booking-form">
+                            <form action="{{ url_for('book_appointment') }}" method="POST">
+                                <div class="form-header">
+                                    <h2>Book Your Appointment</h2>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" id="name" name="name" type="text" placeholder="Name">
+                                    <span class="form-label">Name</span>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" id="phone_number" name="phone_number" type="tel" placeholder="Phone number">
+                                    <span class="form-label" >Phone</span>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" id="appt_location" name="appt_location" type="postcode" placeholder="Address for the Appointment">
+                                    <span class="form-label" >Location</span>
+                                </div>
+                                <div class="form-group">
+                                    <select id="service" name="service_name" class="service_dropdown form-control">
+                                        <option selected>Choose Service</option>
+                                        {% for service in services %}
+                                            <option value="{{service.service_name}}">{{service.service_name}}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <span class="form-label" >Service</span>
+                                </div>
+                                <div class="row">
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input placeholder="Selected date" id="appt_date" name="appt_date" type="text" class="form-control" id="datepicker">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input class="form-control" type="time" id="appt_time" name="appt_time" required>
+                                            <span class="form-label">Appointment Time</span>
+                                        </div>
                                     </div>
                                 </div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<input class="form-control" type="time" id="appt_time" name="appt_time" required>
-										<span class="form-label">Appointment Time</span>
-									</div>
-								</div>
-							</div>
-							<div class="form-btn">
-								<button class="btn-primary btn-lg">Book Now</button>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                                <div class="form-btn">
+                                    <button class="btn-primary btn-lg">Book Now</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
 	
 
