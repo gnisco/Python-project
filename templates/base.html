@@ -63,7 +63,7 @@
                                 <a class="dropdown-item" href="{{ url_for('schedule') }}">Schedule</a>
                             </div>
                         </li>
-                        {% if user_id in session %}
+                        {% if session.user %}
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAdmintools" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Admin Tools

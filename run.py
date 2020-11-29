@@ -1,8 +1,10 @@
 import os
 import bcrypt
-from flask import Flask, render_template, redirect, request, url_for, session, flash, g
+from flask import (
+    Flask, flash, render_template, redirect, request, url_for, session, flash, g)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 
@@ -129,57 +131,68 @@ def delete_service(service_id):
     mongo.db.services.remove({'_id': ObjectId(service_id)})
     return redirect(url_for('servicesadmin'))
 
-@app.route('/register', methods=['POST', 'GET'])
+@app.route("/register", methods=["GET", "POST"])
 def register():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        
-        
-        if password == '' or username == '':
-            error = 'Please enter a username and password'
-            return render_template('index.html')
+    if request.method == "POST":
+        # check if username already exists in db
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
 
-        existing_user = mongo.db.users.find_one({'username' : username})
+        if existing_user:
+            flash("Username already exists")
+            return redirect(url_for("register"))
 
-        if existing_user is None:
-            hashed_password = bcrypt.hashpw(password, bcrypt.gensalt(14))
-            mongo.db.users.insert_one({
-                'username' : username, 
-                'password' : hashed_password
-            })
-            session['username'] = username
-            return redirect(url_for('index'))
+        register = {
+            "username": request.form.get("username").lower(),
+            "password": generate_password_hash(request.form.get("password"))
+        }
+        mongo.db.users.insert_one(register)
 
-        else:
-            flash('This username already exists!')
+        # put the new user into 'session' cookie
+        session["user"] = request.form.get("username").lower()
+        flash("Registration Successful!")
+        return redirect(url_for("profile", username=session["user"]))
 
-    return render_template('register.html')
+    return render_template("register.html")
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route("/login", methods=["GET", "POST"])
 def login():
-    print("THE DATA:")
-    print(request.data)
+    if request.method == "POST":
+        # check if username exists in db
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
 
-    if request.method == 'POST':
-        password = request.form['password']
-        username = request.form['username']
-        login_user = mongo.db.users.find_one({'username' : username})
-
-        
-    
-        if login_user:
-            hashed_password = login_user['password']
-            if bcrypt.checkpw(password.encode('utf-8'), hashed_password):
-                session['username'] = username
-                return redirect(url_for('index', user_id = username ))
+        if existing_user:
+            # ensure hashed password matches user input
+            if check_password_hash(
+                    existing_user["password"], request.form.get("password")):
+                        session["user"] = request.form.get("username").lower()
+                        flash("Welcome, {}".format(
+                            request.form.get("username")))
+                        return redirect(url_for(
+                            "profile", username=session["user"]))
             else:
-                flash('Invalid Username or Password, Please try again.')
-                return render_template(url_for('adminlogin'))
+                # invalid password match
+                flash("Incorrect Username and/or Password")
+                return redirect(url_for("admin_login"))
+
         else:
-            flash('Invalid Username or Password, Please try again.')
-        
+            # username doesn't exist
+            flash("Incorrect Username and/or Password")
+            return redirect(url_for("admin_login"))
+
     return render_template("admin_login.html")
+
+@app.route("/profile/<username>", methods=["GET", "POST"])
+def profile(username):
+    # grab the session user's username from db
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+
+    if session["user"]:
+        return render_template("profile.html", username=username)
+
+    return redirect(url_for("admin_login"))
 
 @app.route('/order', methods=['POST'])
 def order_entry():

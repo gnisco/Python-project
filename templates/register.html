@@ -8,30 +8,30 @@
         <li class="breadcrumb-item">
         <a href="index.html">Home</a>
         </li>
-        <li class="breadcrumb-item active">Add a new promotion or service that you have to offer here:</li>
+        <li class="breadcrumb-item active">Create an Admin user using this form:</li>
     </ol>
     
-    <div class="container container_edit_services">
-		    <div class="wrap_edit_service">
-			    <form class="edit_service-form validate-form" action="{{ url_for('add_user') }}" method="POST">
+    <div class="container container_register">
+		<div class="wrap_register">
+			<form class="register-form validate-form" action="{{ url_for('register') }}" method="POST">
 
-				    <div class="wrap-input validate-input" data-validate="Type is required">
-					    <span class="form-label">Create Username:</span>
-					    <input class="form-control" id="username" name="username" type="text" placeholder="Username">
-					    <span class="focus-input100"></span>
-				    </div>
+				<div class="wrap-input validate-input" data-validate="Type is required">
+					<span class="form-label">Create Username:</span>
+					<input class="form-control" id="username" name="username" type="text" placeholder="Username">
+					<span class="focus-input100"></span>
+				</div>
 
-				    <div class="wrap-input validate-input" data-validate="Name is required">
-					    <span class="form-label">Create Password</span>
-					    <input class="form-control" id="password" name="password" type="password" placeholder="Password">
-					    <span class="focus-input100"></span>
-				    </div>
+				<div class="wrap-input validate-input" data-validate="Name is required">
+					<span class="form-label">Create Password</span>
+					<input class="form-control" id="password" name="password" type="password" placeholder="Password">
+					<span class="focus-input100"></span>
+				</div>
 
-                    <button type='submit' class='btn' name='action'> Create user </button>
+                <button type='submit' class='btn' name='action'> Create user </button>
 					
-			    </form>
-		    </div>
-	    </div>
+			</form>
+		</div>
+	</div>
 
 </div>
 
