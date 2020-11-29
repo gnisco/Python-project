@@ -7,26 +7,17 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
         <div class="carousel-inner" role="listbox">
-        <!-- Slide One - Set the background image for this slide in the line below -->
-            <div class="carousel-item active" style="background-image: url('http://placehold.it/1900x1080')">
-                <div class="carousel-caption d-none d-md-block">
-                    <h3>First Slide</h3>
-                    <p>This is a description for the first slide.</p>
-                </div>
+        
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="/static/images/index1.jpg" alt="First slide">
             </div>
-        <!-- Slide Two - Set the background image for this slide in the line below -->
-            <div class="carousel-item" style="background-image:" href="{{url_for('static', filename='images/homepage1_bob.jpg')}}">
-                <div class="carousel-caption d-none d-md-block">
-                    <h3>Second Slide</h3>
-                    <p>This is a description for the second slide.</p>
-                </div>
+        
+            <div class="carousel-item" >
+                <img class="img-fluid rounded mb-4" src="/static/images/index2.jpg" alt="Image 2">
             </div>
-        <!-- Slide Three - Set the background image for this slide in the line below -->
+        
             <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
-                <div class="carousel-caption d-none d-md-block">
-                    <h3>Third Slide</h3>
-                    <p>This is a description for the third slide.</p>
-                </div>
+                <img class="img-fluid rounded mb-4" src="/static/images/index3.jpg" alt="Image 3">
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -43,11 +34,12 @@
     <div class="container">
         <h1 class="my-4">Welcome to Timely-Care</h1>
 
-        <!-- Marketing Icons Section -->
+        
         <div class="row">
             <div class="col-lg-4 mb-4">
                 <div class="card h-100">
-                    <h4 class="card-header">Looking for a new hair colour?</h4>
+                    <h4 class="card-header">New hair colour?</h4>
+                    <img class="card-img-top" src="/static/images/colour.jpg" alt="Colour Hairstyle">
                     <div class="card-body">
                         <p class="card-text">If you are thinking of changing your current hair colour but don't want to leave the comfort of your own home then take a look at the different options we have available for our hair colour services. Our appointments are home visits so simply give us your address and we will come to you!</p>
                     </div>
@@ -58,94 +50,25 @@
             </div>
             <div class="col-lg-4 mb-4">
                 <div class="card h-100">
-                    <h4 class="card-header">Card Title</h4>
+                    <h4 class="card-header">Upcoming wedding?</h4>
+                    <img class="card-img-top" src="/static/images/bride.jpg" alt="Wedding Hairstyle">
                     <div class="card-body">
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
+                        <p class="card-text">Are you planning your wedding? In need of a fresh hairstyle which will captivate everyones attention on you at your wedding? We even do parties so all your bridesmaids can be taken care of the same day so be sure to book a visit with us we can travel to you anytime to help relieve the stress on your wedding day!</p>
                     </div>
                     <div class="card-footer">
-                        <a href="#" class="btn btn-outline-primary">Learn More</a>
+                        <a href="{{ url_for('services') }}" class="btn btn-outline-primary">Learn More</a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 mb-4">
                 <div class="card h-100">
-                    <h4 class="card-header">Card Title</h4>
+                    <h4 class="card-header">Nails service</h4>
+                    <img class="card-img-top" src="/static/images/nails.jpg" alt="Nails">
                     <div class="card-body">
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+                        <p class="card-text">If you have been thinking about getting a new colour on your nails or extensions put in then look no further than check out our options for doing your nails! It's quick and convenient, simply let us know what you would like to do and we will come to you with all the options we have.</p>
                     </div>
                     <div class="card-footer">
-                        <a href="#" class="btn btn-outline-primary">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <h2>Portfolio Heading</h2>
-
-        <div class="row">
-            <div class="col-lg-4 col-sm-6 portfolio-item">
-                <div class="card h-100">
-                    <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            <a href="#">Project One</a>
-                        </h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 portfolio-item">
-                <div class="card h-100">
-                    <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            <a href="#">Project Two</a>
-                        </h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 portfolio-item">
-                <div class="card h-100">
-                    <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            <a href="#">Project Three</a>
-                        </h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 portfolio-item">
-                <div class="card h-100">
-                    <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            <a href="#">Project Four</a>
-                        </h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 portfolio-item">
-                <div class="card h-100">
-                    <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            <a href="#">Project Five</a>
-                        </h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 portfolio-item">
-                <div class="card h-100">
-                    <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            <a href="#">Project Six</a>
-                        </h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque earum nostrum suscipit ducimus nihil provident, perferendis rem illo, voluptate atque, sit eius in voluptates, nemo repellat fugiat excepturi! Nemo, esse.</p>
+                        <a href="{{ url_for('services') }}" class="btn btn-outline-primary">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -154,36 +77,24 @@
         <!-- Features Section -->
         <div class="row">
             <div class="col-lg-6">
-                <h2>Modern Business Features</h2>
-                <p>The Modern Business template by Start Bootstrap includes:</p>
+                <h2>Timely-Care Features</h2>
                 <ul>
                     <li>
-                        <strong>Bootstrap v4</strong>
+                        <strong>Services:</strong>
                     </li>
-                    <li>jQuery</li>
-                    <li>Font Awesome</li>
-                    <li>Working contact form with validation</li>
-                    <li>Unstyled page elements for easy customization</li>
+                    <li>Haircuts/Styling</li>
+                    <li>Hair colouring and highlits</li>
+                    <li>Wedding packages</li>
+                    <li>Nails, Manicures, pedicures and more</li>
                 </ul>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
+                <p>We Provide a range of services for all things hair and beauty and we take pride in what we do. We are competetive in pricing as we don't need to upkeep a shop we simply come to you!</p>
             </div>
             <div class="col-lg-6">
-                <img class="img-fluid rounded" src="http://placehold.it/700x450" alt="">
+                <img class="img-fluid rounded" src="/static/images/index4.jpg" alt="Nails in shop">
             </div>
         </div>
-        <!-- /.row -->
-
-        <hr>
-
-        <!-- Call to Action Section -->
-        <div class="row mb-4 book_now_link">
-            <div class="col-md-8 book_now_des">
-                <p>Looking for a home visit haircut experience or bridal party makeover?</p>
-            </div>
-            <div class="col-md-4 book_now_btn">
-                <a class="btn btn-lg btn-outline-secondary btn-block" href="{{ url_for('booking') }}">Book Now!</a>
-            </div>
-        </div>
+        
+        
     </div>
 
 {% endblock %}
