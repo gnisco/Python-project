@@ -1,83 +1,78 @@
 {% extends 'base.html' %} {% block content %}
   <!-- Page Content -->
-  <div class="container">
+    <div class="container">
 
-    <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">About
-      <small>Subheading</small>
-    </h1>
+        <!-- Page Heading/Breadcrumbs -->
+        <h1 class="mt-4 mb-3">About
+            <small>Subheading</small>
+        </h1>
 
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="{{ url_for('index') }}">Home</a>
-      </li>
-      <li class="breadcrumb-item active">About</li>
-    </ol>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="{{ url_for('index') }}">Home</a>
+            </li>
+            <li class="breadcrumb-item active">About</li>
+        </ol>
 
-    <!-- Intro Content -->
-    <div class="row">
-      <div class="col-lg-6">
-        <img class="img-fluid rounded mb-4" src="/static/images/about1.jpg" alt="Our Team">
-      </div>
-      <div class="col-lg-6">
-        <h2>About Timely-Care</h2>
-        <p>Timely-Care was started by proffesionals looking to help people who may not be able to go to their local hairdressers or beauty salon either due to medical conditions or age. Our aim is to provide a friendly, easy service to people in need and help support our communites.</p>
-        <p>We also love taking care of wedding parties where we can provide numerous packages for the bride and her bridesmaid including hairstyles, makeup and nails. It's flexible as you choose the location and we will come to you!</p>
-        <p>If you are a proffesional and are thinking about joining our lovely team please get in touch! Simply send us your information thorugh our <a href="{{ url_for('contact') }}">contact</a> page and let us know what you do, we'll be in touch as soon as possible.</p>
-      </div>
-    </div>
-    <!-- /.row -->
+        <!-- Intro Content -->
+        <div class="row">
+            <div class="col-lg-6">
+                <img class="img-fluid rounded mb-4" src="/static/images/about1.jpg" alt="Our Team">
+            </div>
+            <div class="col-lg-6">
+                <h2>About Timely-Care</h2>
+                <p>Timely-Care was started by proffesionals looking to help people who may not be able to go to their local hairdressers or beauty salon either due to medical conditions or age. Our aim is to provide a friendly, easy service to people in need and help support our communites.</p>
+                <p>We also love taking care of wedding parties where we can provide numerous packages for the bride and her bridesmaid including hairstyles, makeup and nails. It's flexible as you choose the location and we will come to you!</p>
+                <p>If you are a proffesional and are thinking about joining our lovely team please get in touch! Simply send us your information thorugh our <a href="{{ url_for('contact') }}">contact</a> page and let us know what you do, we'll be in touch as soon as possible.</p>
+            </div>
+        </div>
+        <!-- /.row -->
 
-    <!-- Team Members -->
-    <h2>Our Team</h2>
+        <!-- Team Members -->
+        <h2>Our Team</h2>
 
-    <div class="row">
-        <div class="col-lg-4 mb-4">
-            <div class="card h-100 text-center">
-                <img class="card-img-top" src="/static/images/team1.jpg" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Gemma</h4>
-                    <h6 class="card-subtitle mb-2 text-muted">Lead hair stylist</h6>
-                    <p class="card-text">Gemma has lots of experience in hair salons in the past and is now our go to hair stylisist/cutter for home visits.</p>
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 text-center">
+                    <img class="card-img-top" src="/static/images/team1.jpg" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">Gemma</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">Lead hair stylist</h6>
+                        <p class="card-text">Gemma has lots of experience in hair salons in the past and is now our go to hair stylisist/cutter for home visits.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#">gemma@timely-care.com</a>
+                    </div>
                 </div>
-                <div class="card-footer">
-                    <a href="#">gemma@timely-care.com</a>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 text-center">
+                    <img class="card-img-top" src="/static/images/team2.jpg" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">Scarlett</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">Colour expert</h6>
+                        <p class="card-text">Scarlett does freelance colouring services she does a great ombre you won't be disappointed if you choose to mix up your colour with her!</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#">scralett@timely-care.com</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 text-center">
+                    <img class="card-img-top" src="/static/images/team3.jpg" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">Jesse</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">Beautician</h6>
+                        <p class="card-text">Jesse handles all of our nail appointments having qualified in college with a beaty technician diploma she is now taking all of our beauty treatment appointments.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#">jesse@timely-care.com</a>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 mb-4">
-            <div class="card h-100 text-center">
-                <img class="card-img-top" src="/static/images/team2.jpg" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Scarlett</h4>
-                    <h6 class="card-subtitle mb-2 text-muted">Colour expert</h6>
-                    <p class="card-text">Scarlett does freelance colouring services she does a great ombre you won't be disappointed if you choose to mix up your colour with her!</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#">scralett@timely-care.com</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 mb-4">
-            <div class="card h-100 text-center">
-                <img class="card-img-top" src="/static/images/team3.jpg" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Jesse</h4>
-                    <h6 class="card-subtitle mb-2 text-muted">Beautician</h6>
-                    <p class="card-text">Jesse handles all of our nail appointments having qualified in college with a beaty technician diploma she is now taking all of our beauty treatment appointments.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#">jesse@timely-care.com</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- /.row -->
 
-    
     </div>
-    <!-- /.row -->
-
-  </div>
 {% endblock %}
 
