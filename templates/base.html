@@ -83,22 +83,20 @@
             {% block content %} {% endblock %}
         </div>
 
-        <footer class="py-5 bg-dark">
+        <dive class="py-5 bg-dark footer fixed-bottom">
             <div class="container row">
                 <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
             </div>
-            {% if user_id not in session %}
+            {% if session.user %}
+                <div class="container row">
+                    <a class="login_link btn btn-outline-primary" href="{{ url_for('end_session') }}">Log Out</a>
+                </div>
+            {% else %}
                 <div class="container row">
                     <a class="login_link btn btn-outline-primary" href="{{ url_for('adminlogin') }}">Admin Login</a>
                 </div>
             {% endif %}
-            <div class="container row">
-                <a class="login_link btn btn-outline-primary" href="{{ url_for('end_session') }}">Log Out</a>
-            </div>
-            {% if user_id in session %}
-                
-            {% endif %}
-        </footer>
+        </div>
 
     </div>
   
