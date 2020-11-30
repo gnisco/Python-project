@@ -174,14 +174,14 @@ def login():
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
-                return redirect(url_for("admin_login"))
+                return redirect(url_for("adminlogin"))
 
         else:
             # username doesn't exist
             flash("Incorrect Username and/or Password")
-            return redirect(url_for("admin_login"))
+            return redirect(url_for("adminlogin"))
 
-    return render_template("admin_login.html")
+    return render_template("adminlogin.html")
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
